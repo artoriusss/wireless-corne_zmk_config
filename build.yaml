@@ -9,7 +9,7 @@ include:
   - board: blecorne_right
     # shield: nice_view
 
-  # Uncomment the following to build a "settings reset" firmware
+  # Uncomment the following to build a "settings reset" firmware!
   # to clear persistent settings (bluetooth connections, etc).
   - board: blecorne_left
     shield: settings_reset
