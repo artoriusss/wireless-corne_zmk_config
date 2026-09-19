@@ -30,12 +30,13 @@
 
 / {
         behaviors {
-                // Home-row mods: QMK parity -- TAPPING_TERM 200 (tap-preferred == QMK default,
-                // i.e. hold only on term expiry, never on interrupt) + FLOW_TAP_TERM 150.
+                // Home-row mods: TAPPING_TERM 200 + FLOW_TAP_TERM 150 from QMK. flavor =
+                // "balanced": interrupt key press+release inside tapping-term resolves hold,
+                // matching QMK's permissive-hold feel for fast mod chords (e.g. ctrl+shift+c).
                 hml: home_row_mod_left {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        flavor = "tap-preferred";
+                        flavor = "balanced";
                         tapping-term-ms = <200>;
                         quick-tap-ms = <200>;
                         require-prior-idle-ms = <150>;
@@ -45,7 +46,7 @@
                 thm: thumb_mod_tap {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        flavor = "tap-preferred";
+                        flavor = "balanced";
                         tapping-term-ms = <200>;
                         quick-tap-ms = <200>;
                         require-prior-idle-ms = <150>;
@@ -54,7 +55,7 @@
                 hmr: home_row_mod_right {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        flavor = "tap-preferred";
+                        flavor = "balanced";
                         tapping-term-ms = <200>;
                         quick-tap-ms = <200>;
                         require-prior-idle-ms = <150>;
