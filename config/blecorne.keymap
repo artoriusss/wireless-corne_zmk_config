@@ -31,8 +31,10 @@
 / {
         behaviors {
                 // Home-row mods: TAPPING_TERM 200 + FLOW_TAP_TERM 150 from QMK. flavor =
-                // "balanced": interrupt key press+release inside tapping-term resolves hold,
-                // matching QMK's permissive-hold feel for fast mod chords (e.g. ctrl+shift+c).
+                // "balanced" + hold-trigger-on-release: the cross-hand check is deferred to key
+                // release, so same-hand mod stacks (ctrl on N + shift on E) still resolve as
+                // holds once a cross-hand key follows. Without it the second same-hand mod
+                // press instantly settles the first one as a tap.
                 hml: home_row_mod_left {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
@@ -42,6 +44,7 @@
                         require-prior-idle-ms = <150>;
                         bindings = <&kp>, <&kp>;
                         hold-trigger-key-positions = <KEYS_R THUMBS>;
+                        hold-trigger-on-release;
                 };
                 thm: thumb_mod_tap {
                         compatible = "zmk,behavior-hold-tap";
@@ -61,6 +64,7 @@
                         require-prior-idle-ms = <150>;
                         bindings = <&kp>, <&kp>;
                         hold-trigger-key-positions = <KEYS_L THUMBS>;
+                        hold-trigger-on-release;
                 };
         };
 
